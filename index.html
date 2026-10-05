@@ -3,1031 +3,316 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>سربازان شاه | اتحاد مجازی</title>
-
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
 <style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+:root{--gold-main:#d4af37;--gold-light:#f5d76e;--gold-dark:#8b6914;--bg-dark:#0a0a0f;--bg-card:#1a1a24;--text-light:#e8e8e8}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Vazirmatn',sans-serif;background:var(--bg-dark);color:var(--text-light);direction:rtl;overflow-x:hidden}
+body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 50% 50%,rgba(212,175,55,.05) 0%,transparent 60%);animation:bgPulse 10s infinite alternate;z-index:-2}
+@keyframes bgPulse{0%{transform:scale(1);opacity:.5}100%{transform:scale(1.2);opacity:1}}
+#particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:-1}
+.particle{position:absolute;background:var(--gold-main);border-radius:50%;opacity:0;animation:floatParticle linear infinite}
+@keyframes floatParticle{0%{transform:translateY(100vh) scale(0);opacity:0}20%{opacity:.8}80%{opacity:.8}100%{transform:translateY(-10vh) scale(1);opacity:0}}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+header{position:fixed;top:0;width:100%;padding:15px 0;z-index:1000;transition:all .3s ease}
+header.scrolled{background:rgba(10,10,15,.85);backdrop-filter:blur(10px);box-shadow:0 4px 20px rgba(0,0,0,.5);padding:10px 0}
+.header-container{display:flex;justify-content:space-between;align-items:center}
+.logo{display:flex;align-items:center;gap:10px}
+.crown-icon{color:var(--gold-main);font-size:1.5rem}
+.logo h1{font-size:1.2rem;color:var(--gold-main)}
+nav ul{display:flex;list-style:none;gap:20px}
+nav a{color:var(--text-light);text-decoration:none;font-size:.9rem;transition:all .3s ease;position:relative;cursor:pointer}
+nav a:hover,nav a.active{color:var(--gold-main)}
+nav a.active::after{content:'';position:absolute;bottom:-5px;left:0;width:100%;height:2px;background:var(--gold-main);border-radius:2px}
+.hamburger{display:none;cursor:pointer;flex-direction:column;gap:5px}
+.hamburger span{width:25px;height:3px;background:var(--gold-main);transition:all .3s ease}
+.btn{display:inline-block;padding:12px 30px;border-radius:8px;text-decoration:none;font-weight:bold;transition:all .3s ease;cursor:pointer;border:none;position:relative;overflow:hidden;font-family:'Vazirmatn',sans-serif;font-size:.95rem}
+.btn-primary{background:linear-gradient(135deg,var(--gold-main),var(--gold-dark));color:#000}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 10px 20px rgba(212,175,55,.3)}
+.btn-outline{border:2px solid var(--gold-main);color:var(--gold-main);background:transparent}
+.btn-outline:hover{background:var(--gold-main);color:#000}
+.shimmer::after{content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);animation:shimmer 2.5s infinite}
+@keyframes shimmer{100%{left:200%}}
+.section{padding:80px 0}
+.section-title{text-align:center;font-size:2rem;color:var(--gold-main);margin-bottom:50px}
+.page{display:none;animation:fadeIn .5s ease}
+.page.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding-top:80px}
+.crown-anim{font-size:5rem;color:var(--gold-main);animation:floatCrown 3s ease-in-out infinite;display:inline-block;margin-bottom:20px}
+@keyframes floatCrown{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-15px) rotate(5deg)}}
+.glow-text{font-size:2.5rem;color:var(--gold-light);text-shadow:0 0 10px rgba(212,175,55,.5);animation:glowPulse 2s infinite alternate;margin-bottom:20px}@keyframes glowPulse{0%{text-shadow:0 0 10px rgba(212,175,55,.3)}100%{text-shadow:0 0 25px rgba(212,175,55,.8),0 0 40px rgba(212,175,55,.5)}}
+.hero p{max-width:600px;margin:0 auto 30px;line-height:1.8}
+.hero-buttons{display:flex;gap:15px;justify-content:center;flex-wrap:wrap}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:20px}
+.stat-card{background:var(--bg-card);padding:30px;border-radius:15px;text-align:center;border:1px solid rgba(212,175,55,.1);transition:all .3s ease}
+.stat-card:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(212,175,55,.1)}
+.stat-card h4{font-size:2.5rem;color:var(--gold-light);margin-bottom:10px}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px}
+.member-card{background:var(--bg-card);padding:30px;border-radius:15px;text-align:center;border:1px solid rgba(212,175,55,.1);transition:all .3s ease;position:relative}
+.member-card:hover{transform:translateY(-5px);box-shadow:0 15px 40px rgba(212,175,55,.15)}
+.avatar-pulse{width:80px;height:80px;margin:0 auto 15px;border-radius:50%;padding:3px;background:var(--gold-main);display:flex;align-items:center;justify-content:center;animation:pulseRing 2s infinite}
+@keyframes pulseRing{0%{box-shadow:0 0 0 0 rgba(212,175,55,.7)}70%{box-shadow:0 0 0 15px rgba(212,175,55,0)}100%{box-shadow:0 0 0 0 rgba(212,175,55,0)}}
+.avatar{width:100%;height:100%;border-radius:50%;background:var(--bg-dark);display:flex;align-items:center;justify-content:center;font-size:2rem;color:var(--gold-main);font-weight:bold;transition:transform .6s ease}
+.member-card:hover .avatar{transform:rotate(360deg)}
+.role{color:var(--gold-main);font-size:.9rem;margin-top:5px}
+.page-header{padding:120px 0 40px;text-align:center;background:linear-gradient(to bottom,rgba(212,175,55,.1),transparent)}
+.page-header h2{font-size:2.5rem;color:var(--gold-main);margin-bottom:10px}
+.ranking-table{width:100%;border-collapse:collapse;background:var(--bg-card);border-radius:15px;overflow:hidden}
+.ranking-table th,.ranking-table td{padding:15px;text-align:right;border-bottom:1px solid rgba(212,175,55,.1)}
+.ranking-table th{background:rgba(212,175,55,.1);color:var(--gold-main);font-weight:bold}
+.ranking-table tr:hover{background:rgba(255,255,255,.02)}
+.medal-gold{color:#ffd700}.medal-silver{color:#c0c0c0}.medal-bronze{color:#cd7f32}
+.form-container{max-width:600px;margin:0 auto;background:var(--bg-card);padding:40px;border-radius:15px;border:1px solid rgba(212,175,55,.1)}
+.form-group{margin-bottom:20px}
+.form-group label{display:block;margin-bottom:8px;color:var(--gold-light)}
+.form-group input,.form-group textarea{width:100%;padding:12px;border-radius:8px;border:1px solid rgba(212,175,55,.3);background:rgba(0,0,0,.3);color:var(--text-light);font-family:'Vazirmatn',sans-serif;font-size:.95rem}
+.form-group input:focus,.form-group textarea:focus{outline:none;border-color:var(--gold-main)}
+.news-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px}
+.news-card{background:var(--bg-card);border-radius:15px;padding:25px;border:1px solid rgba(212,175,55,.1);transition:all .3s ease}
+.news-card:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(212,175,55,.1)}
+.news-date{font-size:.8rem;color:var(--gold-main);margin-bottom:10px}
+.news-title{font-size:1.2rem;margin-bottom:10px}
+footer{background:#050508;padding:30px 0;text-align:center;font-size:.85rem;border-top:1px solid rgba(212,175,55,.1)}
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.admin-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.admin-card{background:var(--bg-card);padding:25px;border-radius:15px;border:1px solid rgba(212,175,55,.2);transition:all .3s ease;cursor:pointer}.admin-card:hover{border-color:var(--gold-main);transform:translateY(-5px)}
+.admin-card h4{color:var(--gold-main);margin-bottom:10px;font-size:1.1rem}
+@media (max-width:768px){
+nav ul{display:none;position:absolute;top:100%;right:0;width:100%;background:var(--bg-card);flex-direction:column;padding:20px;text-align:center;border-bottom:2px solid var(--gold-main)}
+nav ul.active{display:flex}
+.hamburger{display:flex}
+.glow-text{font-size:1.8rem}
+.crown-anim{font-size:3.5rem}
 }
-
-body{
-    font-family:Tahoma, Arial, sans-serif;
-    background:#0b0f14;
-    color:#eee;
-    line-height:1.8;
-}
-
-a{
-    color:inherit;
-    text-decoration:none;
-}
-
-.container{
-    width:90%;
-    max-width:1200px;
-    margin:auto;
-}
-
-header{
-    background:#10161e;
-    border-bottom:1px solid #29313d;
-    position:sticky;
-    top:0;
-    z-index:1000;
-}
-
-.navbar{
-    min-height:75px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:20px;
-}
-
-.logo{
-    font-size:22px;
-    font-weight:bold;
-    color:#d4af37;
-}
-
-.nav-links{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-    list-style:none;
-}
-
-.nav-links a{
-    display:block;
-    padding:9px 13px;
-    border-radius:8px;
-    color:#bbb;
-    transition:.2s;
-}
-
-.nav-links a:hover{
-    background:#1a222d;
-    color:#d4af37;
-}
-
-.page{
-    display:none;
-    min-height:calc(100vh - 150px);
-}
-
-.page.active{
-    display:block;
-}
-
-.hero{
-    padding:100px 20px;
-    text-align:center;
-    background:
-        radial-gradient(circle at center,#1c2735 0%,#0b0f14 65%);
-}
-
-.hero h1{
-    font-size:48px;
-    color:#d4af37;
-    margin-bottom:15px;
-}
-
-.hero p{
-    color:#aaa;
-    font-size:18px;
-}
-
-.btn{
-    display:inline-block;
-    margin-top:25px;
-    padding:12px 25px;
-    border-radius:8px;
-    background:#d4af37;
-    color:#111;
-    font-weight:bold;
-}
-
-.section{
-    padding:60px 0;
-}
-
-.page-header{
-    padding:55px 0;
-    background:#10161e;
-    border-bottom:1px solid #29313d;
-}
-
-.page-header h2{
-    color:#d4af37;
-    font-size:32px;
-}
-
-.page-header p{
-    color:#999;
-}
-
-.section-title{
-    text-align:center;
-    color:#d4af37;
-    margin-bottom:35px;
-    font-size:28px;
-}
-
-.cards-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:22px;
-}
-
-.member-card,
-.info-card,
-.rank-card{
-    background:#111821;
-    border:1px solid #29313d;
-    border-radius:14px;
-    padding:25px;
-    text-align:center;
-    transition:.25s;
-}
-
-.member-card:hover,
-.info-card:hover,
-.rank-card:hover{
-    transform:translateY(-5px);
-    border-color:#d4af37;
-}
-
-.avatar-wrap{
-    display:flex;
-    justify-content:center;
-    margin-bottom:15px;
-}
-
-.avatar{
-    width:75px;
-    height:75px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:50%;
-    background:#1d2733;
-    border:2px solid #d4af37;
-    color:#d4af37;
-    font-size:28px;
-    font-weight:bold;
-}
-
-.member-card h4{
-    font-size:20px;
-    margin-bottom:5px;
-}
-
-.role{
-    color:#c7a936;
-    font-size:14px;
-}
-
-.member-status{
-    margin-top:12px;
-    color:#76d275;
-    font-size:13px;
-}
-
-.member-status span{
-    display:inline-block;
-    width:8px;
-    height:8px;
-    border-radius:50%;
-    background:#57d957;
-    margin-left:5px;
-}
-
-.rank-list{
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-}
-
-.rank-card{
-    display:flex;
-    align-items:center;
-    gap:18px;
-    text-align:right;
-    padding:17px 22px;
-}
-
-.rank-number{
-    min-width:42px;
-    height:42px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:50%;
-    background:#1d2733;
-    color:#d4af37;
-    font-weight:bold;
-}
-
-.rank-name{
-    font-weight:bold;
-    flex:1;
-}
-
-.rank-medal{
-    color:#999;
-}
-
-.info-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
-}
-
-.info-card h3{
-    color:#d4af37;
-    margin-bottom:10px;
-}
-
-.info-card p{
-    color:#aaa;
-}
-
-footer{
-    background:#080b0f;
-    border-top:1px solid #29313d;
-    padding:25px;
-    text-align:center;
-    color:#777;
-}
-
-.fade-up{
-    animation:fadeUp .5s ease;
-}
-
-@keyframes fadeUp{
-    from{
-        opacity:0;
-        transform:translateY(15px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-@media(max-width:800px){
-
-    .navbar{
-        flex-direction:column;
-        padding:15px 0;
-    }
-
-    .nav-links{
-        justify-content:center;
-    }
-
-    .hero h1{
-        font-size:35px;
-    }
-
-}
-
 </style>
 </head>
-
 <body>
+<div id="particles"></div>
 
-<header>
-
-<div class="container navbar">
-
-<div class="logo">
-سربازان شاه
-</div>
-
-<ul class="nav-links">
-
-<li><a href="#" onclick="showPage('home')">خانه</a></li>
-<li><a href="#" onclick="showPage('members')">اعضا</a></li>
-<li><a href="#" onclick="showPage('officials')">مسئولین</a></li>
-<li><a href="#" onclick="showPage('ranking')">رتبه‌بندی</a></li>
-<li><a href="#" onclick="showPage('achievements')">افتخارات</a></li>
-<li><a href="#" onclick="showPage('news')">اخبار</a></li>
-<li><a href="#" onclick="showPage('contact')">ارتباط</a></li>
-<li><a href="#" onclick="showPage('about')">درباره ما</a></li>
-
+<header id="header">
+<div class="container header-container">
+<div class="logo"><span class="crown-icon">♛</span><h1>سربازان شاه</h1></div>
+<nav id="navbar">
+<ul>
+<li><a data-page="home" class="active">خانه</a></li>
+<li><a data-page="members">اعضا</a></li>
+<li><a data-page="officials">مقامات</a></li>
+<li><a data-page="ranking">رتبه‌بندی</a></li>
+<li><a data-page="news">اخبار</a></li>
+<li><a data-page="contact">پیام ناشناس</a></li>
+<li><a data-page="about">درباره ما</a></li>
 </ul>
-
+</nav>
+<div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
 </div>
-
 </header>
 
-
-<!-- HOME -->
-
+<!-- صفحه اصلی -->
 <div id="home" class="page active">
-
 <section class="hero">
-
 <div class="container">
-
-<h1>سربازان شاه</h1>
-
-<p>
-اتحاد مجازی | اتحاد، قدرت ماست
-</p>
-
-<a href="#" class="btn" onclick="showPage('members')">
-مشاهده اعضا
-</a>
-
+<div class="crown-anim">♛</div>
+<h2 class="glow-text">زیر سایه‌ی شاه، پیروزی از آنِ ماست</h2>
+<p>به اتحاد قدرتمند سربازان شاه خوش آمدید. ما با ۳۰۰+ برد و ۰ باخت، در اوج قدرت ایستاده‌ایم.</p>
+<div class="hero-buttons">
+<a class="btn btn-primary shimmer" data-page="ranking">مشاهده رتبه‌بندی</a>
+<a class="btn btn-outline" data-page="members">اعضای اتحاد</a>
 </div>
-
+</div>
 </section>
 
+<section class="section" id="stats">
+<div class="container">
+<h3 class="section-title">آمار اتحاد</h3>
+<div class="stats-grid">
+<div class="stat-card fade-up"><h4 class="counter" data-target="300">0</h4><p>پیروزی</p></div>
+<div class="stat-card fade-up"><h4 class="counter" data-target="0">0</h4><p>شکست</p></div>
+<div class="stat-card fade-up"><h4 class="counter" data-target="3">0</h4><p>صلح دو طرفه</p></div>
+<div class="stat-card fade-up"><h4 class="counter" data-target="12">0</h4><p>حداقل اعضا</p></div>
+</div>
+</div>
+</section>
 
 <section class="section">
-
 <div class="container">
-
-<h2 class="section-title">
-اعضای اصلی
-</h2>
-
+<h3 class="section-title">اعضای برتر</h3>
 <div class="cards-grid">
-
-<div class="member-card">
-<div class="avatar-wrap">
-<div class="avatar">آ</div>
+<div class="member-card fade-up"><div class="avatar-pulse"><div class="avatar">آ</div></div><h4>آرتین</h4><p class="role">مالک اتحاد</p></div>
+<div class="member-card fade-up"><div class="avatar-pulse"><div class="avatar">ع</div></div><h4>عارش</h4><p class="role">وزیر جنگ</p></div>
+<div class="member-card fade-up"><div class="avatar-pulse"><div class="avatar">ط</div></div><h4>طاها</h4><p class="role">وزیر</p></div>
 </div>
-<h4>آرتین</h4>
-<p class="role">👑 مالک اتحاد</p>
 </div>
-
-<div class="member-card">
-<div class="avatar-wrap">
-<div class="avatar">ع</div>
-</div>
-<h4>عارش</h4>
-<p class="role">⚔️ وزیر جنگ</p>
-</div>
-
-<div class="member-card">
-<div class="avatar-wrap">
-<div class="avatar">ط</div>
-</div>
-<h4>طاها</h4>
-<p class="role">🏛️ وزیر</p>
-</div>
-
-</div>
-
-</div>
-
 </section>
-
 </div>
 
-
-<!-- MEMBERS -->
-
+<!-- صفحه اعضا -->
 <div id="members" class="page">
+<div class="page-header"><div class="container"><h2>اعضای اتحاد</h2><p>افتخار آشنایی با سربازان وفادار شاه</p></div></div>
+<section class="section"><div class="container"><div class="cards-grid">
 
-<div class="page-header">
+<div class="member-card fade-up"><div class="avatar-pulse"><div class="avatar">آ</div></div><h4>آرتین</h4><p class="role">مالک اتحاد</p></div>
 
-<div class="container">
+<div class="member-card fade-up"><div class="avatar-pulse"><div class="avatar">ع</div></div><h4>عارش</h4><p class="role">وزیر جنگ</p></div>
 
-<h2>اعضای اتحاد</h2>
+<div class="member-card fade-up"><div class="avatar-pulse"><div class="avatar">ط</div></div><h4>طاها</h4><p class="role">وزیر</p></div>
 
-<p>
-سربازانی که در کنار یکدیگر ایستاده‌اند
-</p>
+<div class="member-card fade-up"><div class="avatar-pulse"><div class="avatar">ط</div></div><h4>طاها</h4><p class="role">عضو</p></div>
 
+<div class="member-card fade-up"><div class="avatar-pulse"><div class="avatar">ا</div></div><h4>امیر محمد</h4><p class="role">عضو</p></div>
+
+<div class="member-card fade-up"><div class="avatar-pulse"><div class="avatar">Б</div></div><h4>Бэтмен</h4><p class="role">عضو</p></div>
+
+<div class="member-card fade-up"><div class="avatar-pulse"><div class="avatar">م</div></div><h4>متین</h4><p class="role">عضو</p></div>
+
+<div class="member-card fade-up"><div class="avatar-pulse"><div class="avatar">ا</div></div><h4>امیر</h4><p class="role">عضو</p></div>
+
+<div class="member-card fade-up"><div class="avatar-pulse"><div class="avatar">م</div></div><h4>محراب</h4><p class="role">عضو</p></div>
+
+<div class="member-card fade-up"><div class="avatar-pulse"><div class="avatar">د</div></div><h4>دونالد ترامپ</h4><p class="role">عضو</p></div>
+
+<div class="member-card fade-up"><div class="avatar-pulse"><div class="avatar">ه</div></div><h4>هلن</h4><p class="role">عضو</p></div>
+
+<div class="member-card fade-up"><div class="avatar-pulse"><div class="avatar">ا</div></div><h4>اکسین</h4><p class="role">عضو</p></div>
+
+<div class="member-card fade-up"><div class="avatar-pulse"><div class="avatar">ع</div></div><h4>علیرضا</h4><p class="role">عضو</p></div>
+
+<div class="member-card fade-up"><div class="avatar-pulse"><div class="avatar">ا</div></div><h4>امپراطوریه ساسانی</h4><p class="role">عضو</p></div>
+
+<div class="member-card fade-up"><div class="avatar-pulse"><div class="avatar">ا</div></div><h4>امام علی</h4><p class="role">عضو</p></div>
+
+<div class="member-card fade-up"><div class="avatar-pulse"><div class="avatar">ا</div></div><h4>اشکان</h4><p class="role">عضو</p></div>
+
+<div class="member-card fade-up"><div class="avatar-pulse"><div class="avatar">M</div></div><h4>M</h4><p class="role">عضو</p></div>
+
+<div class="member-card fade-up"><div class="avatar-pulse"><div class="avatar">V</div></div><h4>Void_black</h4><p class="role">عضو</p></div>
+
+<div class="member-card fade-up"><div class="avatar-pulse"><div class="avatar">ش</div></div><h4>شینوبیکس</h4><p class="role">عضو</p></div>
+
+<div class="member-card fade-up"><div class="avatar-pulse"><div class="avatar">د</div></div><h4>داوین</h4><p class="role">عضو</p></div>
+
+</div></div></section>
 </div>
 
-</div>
-
-
-<section class="section">
-
-<div class="container">
-
-<div class="cards-grid">
-
-
-<div class="member-card fade-up">
-<div class="avatar-wrap">
-<div class="avatar">آ</div>
-</div>
-<h4>آرتین</h4>
-<p class="role">👑 مالک اتحاد</p>
-<div class="member-status"><span></span> فعال</div>
-</div>
-
-
-<div class="member-card fade-up">
-<div class="avatar-wrap">
-<div class="avatar">ع</div>
-</div>
-<h4>عارش</h4>
-<p class="role">⚔️ وزیر جنگ</p>
-<div class="member-status"><span></span> فعال</div>
-</div>
-
-
-<div class="member-card fade-up">
-<div class="avatar-wrap">
-<div class="avatar">ط</div>
-</div>
-<h4>طاها</h4>
-<p class="role">🏛️ وزیر</p>
-<div class="member-status"><span></span> فعال</div>
-</div>
-
-
-<div class="member-card fade-up">
-<div class="avatar-wrap">
-<div class="avatar">ط</div>
-</div>
-<h4>طاها</h4>
-<p class="role">🛡️ عضو</p>
-<div class="member-status"><span></span> فعال</div>
-</div>
-
-
-<div class="member-card fade-up">
-<div class="avatar-wrap">
-<div class="avatar">ا</div>
-</div>
-<h4>امیر محمد</h4>
-<p class="role">🛡️ عضو</p>
-<div class="member-status"><span></span> فعال</div>
-</div>
-
-
-<div class="member-card fade-up">
-<div class="avatar-wrap">
-<div class="avatar">Б</div>
-</div>
-<h4>Бэтмен</h4>
-<p class="role">🛡️ عضو</p>
-<div class="member-status"><span></span> فعال</div>
-</div>
-
-
-<div class="member-card fade-up">
-<div class="avatar-wrap">
-<div class="avatar">م</div>
-</div>
-<h4>متین</h4>
-<p class="role">🛡️ عضو</p>
-<div class="member-status"><span></span> فعال</div>
-</div>
-
-
-<div class="member-card fade-up">
-<div class="avatar-wrap">
-<div class="avatar">ا</div>
-</div>
-<h4>امیر</h4>
-<p class="role">🛡️ عضو</p>
-<div class="member-status"><span></span> فعال</div>
-</div>
-
-
-<div class="member-card fade-up">
-<div class="avatar-wrap">
-<div class="avatar">م</div>
-</div>
-<h4>محراب</h4>
-<p class="role">🛡️ عضو</p>
-<div class="member-status"><span></span> فعال</div>
-</div>
-
-
-<div class="member-card fade-up">
-<div class="avatar-wrap">
-<div class="avatar">د</div>
-</div>
-<h4>دونالد ترامپ</h4>
-<p class="role">🛡️ عضو</p>
-<div class="member-status"><span></span> فعال</div>
-</div>
-
-
-<div class="member-card fade-up">
-<div class="avatar-wrap">
-<div class="avatar">ه</div>
-</div>
-<h4>هلن</h4>
-<p class="role">🛡️ عضو</p>
-<div class="member-status"><span></span> فعال</div>
-</div>
-
-
-<div class="member-card fade-up">
-<div class="avatar-wrap">
-<div class="avatar">ا</div>
-</div>
-<h4>اکسین</h4>
-<p class="role">🛡️ عضو</p>
-<div class="member-status"><span></span> فعال</div>
-</div>
-
-
-<div class="member-card fade-up">
-<div class="avatar-wrap">
-<div class="avatar">ع</div>
-</div>
-<h4>علیرضا</h4>
-<p class="role">🛡️ عضو</p>
-<div class="member-status"><span></span> فعال</div>
-</div>
-
-
-<div class="member-card fade-up">
-<div class="avatar-wrap">
-<div class="avatar">ا</div>
-</div>
-<h4>امپراطوریه ساسانی</h4>
-<p class="role">🛡️ عضو</p>
-<div class="member-status"><span></span> فعال</div>
-</div>
-
-
-<div class="member-card fade-up">
-<div class="avatar-wrap">
-<div class="avatar">ا</div>
-</div>
-<h4>امام علی</h4>
-<p class="role">🛡️ عضو</p>
-<div class="member-status"><span></span> فعال</div>
-</div>
-
-
-<div class="member-card fade-up">
-<div class="avatar-wrap">
-<div class="avatar">ا</div>
-</div>
-<h4>اشکان</h4>
-<p class="role">🛡️ عضو</p>
-<div class="member-status"><span></span> فعال</div>
-</div>
-
-
-<div class="member-card fade-up">
-<div class="avatar-wrap">
-<div class="avatar">M</div>
-</div>
-<h4>M</h4>
-<p class="role">🛡️ عضو</p>
-<div class="member-status"><span></span> فعال</div>
-</div>
-
-
-<div class="member-card fade-up">
-<div class="avatar-wrap">
-<div class="avatar">V</div>
-</div>
-<h4>Void_black</h4>
-<p class="role">🛡️ عضو</p>
-<div class="member-status"><span></span> فعال</div>
-</div>
-
-
-<div class="member-card fade-up">
-<div class="avatar-wrap">
-<div class="avatar">ش</div>
-</div>
-<h4>شینوبیکس</h4>
-<p class="role">🛡️ عضو</p>
-<div class="member-status"><span></span> فعال</div>
-</div>
-
-
-<div class="member-card fade-up">
-<div class="avatar-wrap">
-<div class="avatar">د</div>
-</div>
-<h4>داوین</h4>
-<p class="role">🛡️ عضو</p>
-<div class="member-status"><span></span> فعال</div>
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-</div>
-
-
-<!-- OFFICIALS -->
-
+<!-- صفحه مقامات -->
 <div id="officials" class="page">
-
-<div class="page-header">
-
-<div class="container">
-
-<h2>مسئولین اتحاد</h2>
-
-<p>مسئولین اصلی سربازان شاه</p>
-
+<div class="page-header"><div class="container"><h2>مقامات اتحاد</h2><p>مدیران و مسئولان سربازان شاه</p></div></div>
+<section class="section"><div class="container"><div class="cards-grid">
+<div class="member-card fade-up" style="border-color:var(--gold-main)"><div class="avatar-pulse"><div class="avatar" style="font-size:2.5rem">♛</div></div><h4>آرتین</h4><p class="role">مالک و رهبر کل</p><p style="margin-top:10px;font-size:.9rem">بنیان‌گذار اتحاد و تصمیم‌گیرنده نهایی</p></div><div class="member-card fade-up"><div class="avatar-pulse"><div class="avatar">ع</div></div><h4>عارش</h4><p class="role">وزیر جنگ</p><p style="margin-top:10px;font-size:.9rem">فرماندهی نبردها و استراتژی‌های جنگی</p></div>
+<div class="member-card fade-up"><div class="avatar-pulse"><div class="avatar">ط</div></div><h4>طاها</h4><p class="role">وزیر</p><p style="margin-top:10px;font-size:.9rem">مدیریت داخلی و روابط دیپلماتیک</p></div>
+</div></div></section>
 </div>
 
-</div>
-
-
-<section class="section">
-
-<div class="container">
-
-<div class="cards-grid">
-
-<div class="member-card">
-<div class="avatar-wrap">
-<div class="avatar">آ</div>
-</div>
-<h4>آرتین</h4>
-<p class="role">👑 مالک و رهبر کل</p>
-</div>
-
-<div class="member-card">
-<div class="avatar-wrap">
-<div class="avatar">ع</div>
-</div>
-<h4>عارش</h4>
-<p class="role">⚔️ وزیر جنگ</p>
-</div>
-
-<div class="member-card">
-<div class="avatar-wrap">
-<div class="avatar">ط</div>
-</div>
-<h4>طاها</h4>
-<p class="role">🏛️ وزیر</p>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-</div>
-
-
-<!-- RANKING -->
-
+<!-- صفحه رتبه‌بندی -->
 <div id="ranking" class="page">
+<div class="page-header"><div class="container"><h2>جدول رتبه‌بندی</h2><p>برترین‌های اتحاد سربازان شاه</p></div></div>
+<section class="section"><div class="container"><table class="ranking-table fade-up">
+<thead><tr><th>رتبه</th><th>نام</th><th>مقام</th><th>امتیاز / برد</th></tr></thead>
+<tbody>
 
-<div class="page-header">
+<tr><td><span class="medal-gold">🥇</span> ۱</td><td>آرتین</td><td>مالک</td><td>۱۲۰ برد</td></tr>
 
-<div class="container">
+<tr><td><span class="medal-silver">🥈</span> ۲</td><td>امیر</td><td>عضو</td><td>۱۱۰ برد</td></tr>
 
-<h2>رتبه‌بندی اعضا</h2>
+<tr><td><span class="medal-bronze">🥉</span> ۳</td><td>طاها</td><td>وزیر</td><td>۱۰۰ برد</td></tr>
 
-<p>رتبه‌بندی فعلی اتحاد</p>
+<tr><td>۴</td><td>عارش</td><td>وزیر جنگ</td><td>۹۵ برد</td></tr>
 
+<tr><td>۵</td><td>امیر محمد</td><td>عضو</td><td>۹۰ برد</td></tr>
+
+<tr><td>۶</td><td>محراب</td><td>عضو</td><td>۸۵ برد</td></tr>
+
+<tr><td>۷</td><td>دونالد ترامپ</td><td>عضو</td><td>۸۰ برد</td></tr>
+
+<tr><td>۸</td><td>شینوبیکس</td><td>عضو</td><td>۷۵ برد</td></tr>
+
+<tr><td>۹</td><td>اکسین</td><td>عضو</td><td>۷۰ برد</td></tr>
+
+<tr><td>۱۰</td><td>امام علی</td><td>عضو</td><td>۶۵ برد</td></tr>
+
+<tr><td>۱۱</td><td>امپراطوریه ساسانی</td><td>عضو</td><td>۶۰ برد</td></tr>
+
+<tr><td>۱۲</td><td>علیرضا</td><td>عضو</td><td>۵۵ برد</td></tr>
+
+<tr><td>۱۳</td><td>متین</td><td>عضو</td><td>۵۰ برد</td></tr>
+
+<tr><td>۱۴</td><td>هلن</td><td>عضو</td><td>۴۵ برد</td></tr>
+
+<tr><td>۱۵</td><td>اشکان</td><td>عضو</td><td>۴۰ برد</td></tr>
+
+<tr><td>۱۶</td><td>M</td><td>عضو</td><td>۳۵ برد</td></tr>
+
+<tr><td>۱۷</td><td>Void_black</td><td>عضو</td><td>۳۰ برد</td></tr>
+
+<tr><td>۱۸</td><td>داوین</td><td>عضو</td><td>۲۵ برد</td></tr>
+
+<tr><td>۱۹</td><td>Бэтмен</td><td>عضو</td><td>۲۰ برد</td></tr>
+
+</tbody></table></div></section>
 </div>
 
-</div>
-
-
-<section class="section">
-
-<div class="container">
-
-<div class="rank-list">
-
-
-<div class="rank-card">
-<div class="rank-number">1</div>
-<div class="rank-name">آرتین</div>
-<div class="rank-medal">👑</div>
-</div>
-
-
-<div class="rank-card">
-<div class="rank-number">2</div>
-<div class="rank-name">امیر</div>
-<div class="rank-medal">🥈</div>
-</div>
-
-
-<div class="rank-card">
-<div class="rank-number">3</div>
-<div class="rank-name">طاها</div>
-<div class="rank-medal">🥉</div>
-</div>
-
-
-<div class="rank-card">
-<div class="rank-number">4</div>
-<div class="rank-name">عارش</div>
-</div>
-
-
-<div class="rank-card">
-<div class="rank-number">5</div>
-<div class="rank-name">امیر محمد</div>
-</div>
-
-
-<div class="rank-card">
-<div class="rank-number">6</div>
-<div class="rank-name">محراب</div>
-</div>
-
-
-<div class="rank-card">
-<div class="rank-number">7</div>
-<div class="rank-name">دونالد ترامپ</div>
-</div>
-
-
-<div class="rank-card">
-<div class="rank-number">8</div>
-<div class="rank-name">شینوبیکس</div>
-</div>
-
-
-<div class="rank-card">
-<div class="rank-number">9</div>
-<div class="rank-name">اکسین</div>
-</div>
-
-
-<div class="rank-card">
-<div class="rank-number">10</div>
-<div class="rank-name">امام علی</div>
-</div>
-
-
-<div class="rank-card">
-<div class="rank-number">11</div>
-<div class="rank-name">امپراطوریه ساسانی</div>
-</div>
-
-
-<div class="rank-card">
-<div class="rank-number">12</div>
-<div class="rank-name">علیرضا</div>
-</div>
-
-
-<div class="rank-card">
-<div class="rank-number">13</div>
-<div class="rank-name">متین</div>
-</div>
-
-
-<div class="rank-card">
-<div class="rank-number">14</div>
-<div class="rank-name">هلن</div>
-</div>
-
-
-<div class="rank-card">
-<div class="rank-number">15</div>
-<div class="rank-name">اشکان</div>
-</div>
-
-
-<div class="rank-card">
-<div class="rank-number">16</div>
-<div class="rank-name">M</div>
-</div>
-
-
-<div class="rank-card">
-<div class="rank-number">17</div>
-<div class="rank-name">Void_black</div>
-</div>
-
-
-<div class="rank-card">
-<div class="rank-number">18</div>
-<div class="rank-name">داوین</div>
-</div>
-
-
-<div class="rank-card">
-<div class="rank-number">19</div>
-<div class="rank-name">Бэтмен</div>
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-</div>
-
-
-<!-- ACHIEVEMENTS -->
-
-<div id="achievements" class="page">
-
-<div class="page-header">
-
-<div class="container">
-
-<h2>افتخارات</h2>
-
-<p>افتخارات و دستاوردهای اتحاد</p>
-
-</div>
-
-</div>
-
-
-<section class="section">
-
-<div class="container">
-
-<div class="info-grid">
-
-<div class="info-card">
-<h3>🏆 اتحاد قدرتمند</h3>
-<p>تشکیل یک اتحاد منسجم و قدرتمند با اعضای فعال.</p>
-</div>
-
-<div class="info-card">
-<h3>⚔️ قدرت نظامی</h3>
-<p>هماهنگی اعضا و حفظ قدرت اتحاد.</p>
-</div>
-
-<div class="info-card">
-<h3>👑 رهبری</h3>
-<p>مدیریت منظم و متحدانه اعضای اتحاد.</p>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-</div>
-
-
-<!-- NEWS -->
-
+<!-- صفحه اخبار -->
 <div id="news" class="page">
-
-<div class="page-header">
-
-<div class="container">
-
-<h2>اخبار اتحاد</h2>
-
-<p>آخرین اخبار و اطلاعیه‌ها</p>
-
+<div class="page-header"><div class="container"><h2>آخرین اخبار</h2><p>اتفاقاتی که در اتحاد می‌افتد</p></div></div>
+<section class="section"><div class="container"><div class="news-grid">
+<div class="news-card fade-up"><div class="news-date">۱۴ مهر ۱۴۰۵</div><div class="news-title">پیروزی بزرگ در نبرد سرنوشت‌ساز</div><p>اتحاد سربازان شاه موفق شد در یک نبرد نفس‌گیر، حریف خود را با نتیجه قاطع شکست دهد و رکورد ۳۰۰ برد را ثبت کند.</p></div>
+<div class="news-card fade-up"><div class="news-date">۱۰ مهر ۱۴۰۵</div><div class="news-title">صلح دو طرفه با اتحاد همسایه</div><p>پس از مذاکرات دیپلماتیک وزیر طاها، پیمان صلح دو طرفه با یکی از اتحادهای قدرتمند منطقه امضا شد.</p></div>
+</div></div></section>
 </div>
 
-</div>
-
-
-<section class="section">
-
-<div class="container">
-
-<div class="info-grid">
-
-<div class="info-card">
-<h3>📢 اطلاعیه</h3>
-<p>اتحاد همچنان به فعالیت خود ادامه می‌دهد.</p>
-</div>
-
-<div class="info-card">
-<h3>🛡️ اعضای جدید</h3>
-<p>اعضای جدید به جمع سربازان شاه اضافه شدند.</p>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-</div>
-
-
-<!-- CONTACT -->
-
+<!-- صفحه پیام ناشناس -->
 <div id="contact" class="page">
-
-<div class="page-header">
-
-<div class="container">
-
-<h2>ارتباط با ما</h2>
-
-<p>برای ارتباط با اتحاد</p>
-
+<div class="page-header"><div class="container"><h2>ارسال پیام ناشناس</h2><p>نظرات، انتقادات یا پیشنهادات خود را بدون ذکر نام بفرستید</p></div></div>
+<section class="section"><div class="container"><div class="form-container fade-up">
+<form onsubmit="event.preventDefault();alert('پیام شما با موفقیت ارسال شد!');this.reset();">
+<div class="form-group"><label>متن پیام شما:</label><textarea rows="6" placeholder="پیام خود را اینجا بنویسید..." required></textarea></div>
+<button type="submit" class="btn btn-primary shimmer" style="width:100%">ارسال پیام</button>
+</form></div></div></section>
 </div>
 
-</div>
-
-
-<section class="section">
-
-<div class="container">
-
-<div class="info-card">
-
-<h3>📨 ارتباط</h3>
-
-<p>
-برای ارتباط با مسئولین اتحاد از راه‌های ارتباطی تعیین‌شده استفاده کنید.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-</div>
-
-
-<!-- ABOUT -->
-
+<!-- صفحه درباره ما -->
 <div id="about" class="page">
-
-<div class="page-header">
-
-<div class="container">
-
-<h2>درباره ما</h2>
-
-<p>آشنایی با سربازان شاه</p>
-
+<div class="page-header"><div class="container"><h2>درباره اتحاد</h2><p>تاریخچه، قوانین و اهداف ما</p></div></div>
+<section class="section"><div class="container"><div class="form-container fade-up" style="max-width:800px">
+<h3 style="color:var(--gold-main);margin-bottom:15px">معرفی</h3>
+<p style="margin-bottom:30px;line-height:1.8">اتحاد سربازان شاه با رهبری آرتین تاسیس شد و با همت وزیر جنگ عارش و وزیر طاها، به یکی از قدرتمندترین اتحادهای مجازی تبدیل شده است. ما با ۳۰۰+ برد و ۰ باخت، در اوج قدرت هستیم.</p>
+<h3 style="color:var(--gold-main);margin-bottom:15px">قوانین اتحاد</h3>
+<ul style="margin-bottom:30px;line-height:2;padding-right:20px">
+<li>احترام به همه اعضا الزامی است.</li>
+<li>فعالیت مستمر در نبردها و رویدادها.</li>
+<li>عدم افشای اطلاعات داخلی اتحاد.</li>
+<li>حمایت از هم‌تیمی‌ها در شرایط سخت.</li>
+</ul>
+<h3 style="color:var(--gold-main);margin-bottom:15px">تاریخچه</h3>
+<p style="line-height:1.8">این اتحاد در سال ۱۴۰۴ با هدف ایجاد یک جامعه قدرتمند و متحد شکل گرفت. با گذشت زمان و پیوستن اعضای وفادار، به موفقیت‌های چشمگیری دست یافتیم.</p>
+</div></div></section>
 </div>
-
-</div>
-
-
-<section class="section">
-
-<div class="container">
-
-<div class="info-card">
-
-<h3>👑 سربازان شاه</h3>
-
-<p>
-سربازان شاه یک اتحاد مجازی متشکل از اعضایی است که در کنار یکدیگر
-برای ساختن یک مجموعه قدرتمند و متحد فعالیت می‌کنند.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-</div>
-
 
 <footer>
-
-سربازان شاه | اتحاد مجازی
-
+<div class="container">
+<p>© ۲۰۲۶ اتحاد مجازی سربازان شاه. تمامی حقوق محفوظ است.</p>
+<p style="margin-top:5px">طراحی و توسعه: آرتین</p>
+</div>
 </footer>
 
-
 <script>
+// ذرات طلایی
+const pc=document.getElementById('particles');
+for(let i=0;i<30;i++){const p=document.createElement('div');p.classList.add('particle');p.style.left=Math.random()*100+'vw';p.style.animationDuration=(Math.random()*5+5)+'s';p.style.animationDelay=Math.random()*5+'s';p.style.width=p.style.height=(Math.random()*3+2)+'px';pc.appendChild(p);}
 
-function showPage(pageId){
+// هدر
+const header=document.getElementById('header');
+window.addEventListener('scroll',()=>{if(window.scrollY>50)header.classList.add('scrolled');else header.classList.remove('scrolled');});
 
-    document.querySelectorAll('.page').forEach(function(page){
-        page.classList.remove('active');
-    });
+// منو موبایل
+document.getElementById('hamburger').addEventListener('click',()=>{document.querySelector('nav ul').classList.toggle('active');});
 
-    const page = document.getElementById(pageId);
-
-    if(page){
-        page.classList.add('active');
-    }
-
-    window.scrollTo({
-        top:0,
-        behavior:'smooth'
-    });
-}
-
-</script>
-
-</body>
-   </html>
+// تغییر صفحات
+document.querySelectorAll('[data-page]').forEach(link=>{
+link.addEventListener('click',(e)=>{
+e.preventDefault();
+const t=link.getAttribute('data-page');
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+document.getElementBy
