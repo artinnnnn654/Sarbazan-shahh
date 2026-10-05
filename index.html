@@ -89,6 +89,7 @@ nav ul.active{display:flex}
 }
 </style>
 </head>
+
 <body>
 <div id="particles"></div>
 
@@ -150,8 +151,16 @@ nav ul.active{display:flex}
 
 <!-- صفحه اعضا -->
 <div id="members" class="page">
-<div class="page-header"><div class="container"><h2>اعضای اتحاد</h2><p>افتخار آشنایی با سربازان وفادار شاه</p></div></div>
-<section class="section"><div class="container"><div class="cards-grid">
+<div class="page-header">
+<div class="container">
+<h2>اعضای اتحاد</h2>
+<p>افتخار آشنایی با سربازان وفادار شاه</p>
+</div>
+</div>
+
+<section class="section">
+<div class="container">
+<div class="cards-grid">
 
 <div class="member-card fade-up"><div class="avatar-pulse"><div class="avatar">آ</div></div><h4>آرتین</h4><p class="role">مالک اتحاد</p></div>
 
@@ -193,23 +202,58 @@ nav ul.active{display:flex}
 
 <div class="member-card fade-up"><div class="avatar-pulse"><div class="avatar">د</div></div><h4>داوین</h4><p class="role">عضو</p></div>
 
-</div></div></section>
+</div>
+</div>
+</section>
 </div>
 
 <!-- صفحه مقامات -->
 <div id="officials" class="page">
 <div class="page-header"><div class="container"><h2>مقامات اتحاد</h2><p>مدیران و مسئولان سربازان شاه</p></div></div>
 <section class="section"><div class="container"><div class="cards-grid">
-<div class="member-card fade-up" style="border-color:var(--gold-main)"><div class="avatar-pulse"><div class="avatar" style="font-size:2.5rem">♛</div></div><h4>آرتین</h4><p class="role">مالک و رهبر کل</p><p style="margin-top:10px;font-size:.9rem">بنیان‌گذار اتحاد و تصمیم‌گیرنده نهایی</p></div><div class="member-card fade-up"><div class="avatar-pulse"><div class="avatar">ع</div></div><h4>عارش</h4><p class="role">وزیر جنگ</p><p style="margin-top:10px;font-size:.9rem">فرماندهی نبردها و استراتژی‌های جنگی</p></div>
-<div class="member-card fade-up"><div class="avatar-pulse"><div class="avatar">ط</div></div><h4>طاها</h4><p class="role">وزیر</p><p style="margin-top:10px;font-size:.9rem">مدیریت داخلی و روابط دیپلماتیک</p></div>
+
+<div class="member-card fade-up" style="border-color:var(--gold-main)">
+<div class="avatar-pulse"><div class="avatar" style="font-size:2.5rem">♛</div></div>
+<h4>آرتین</h4><p class="role">مالک و رهبر کل</p>
+<p style="margin-top:10px;font-size:.9rem">بنیان‌گذار اتحاد و تصمیم‌گیرنده نهایی</p>
+</div>
+
+<div class="member-card fade-up">
+<div class="avatar-pulse"><div class="avatar">ع</div></div>
+<h4>عارش</h4><p class="role">وزیر جنگ</p>
+<p style="margin-top:10px;font-size:.9rem">فرماندهی نبردها و استراتژی‌های جنگی</p>
+</div>
+
+<div class="member-card fade-up">
+<div class="avatar-pulse"><div class="avatar">ط</div></div>
+<h4>طاها</h4><p class="role">وزیر</p>
+<p style="margin-top:10px;font-size:.9rem">مدیریت داخلی و روابط دیپلماتیک</p>
+</div>
+
 </div></div></section>
 </div>
 
 <!-- صفحه رتبه‌بندی -->
 <div id="ranking" class="page">
-<div class="page-header"><div class="container"><h2>جدول رتبه‌بندی</h2><p>برترین‌های اتحاد سربازان شاه</p></div></div>
-<section class="section"><div class="container"><table class="ranking-table fade-up">
-<thead><tr><th>رتبه</th><th>نام</th><th>مقام</th><th>امتیاز / برد</th></tr></thead>
+<div class="page-header">
+<div class="container">
+<h2>جدول رتبه‌بندی</h2>
+<p>برترین‌های اتحاد سربازان شاه</p>
+</div>
+</div>
+
+<section class="section">
+<div class="container">
+<table class="ranking-table fade-up">
+<thead>
+<tr>
+<th>رتبه</th>
+<th>نام</th>
+<th>مقام</th>
+<th>امتیاز / برد</th>
+</tr>
+</thead>
+
 <tbody>
 
 <tr><td><span class="medal-gold">🥇</span> ۱</td><td>آرتین</td><td>مالک</td><td>۱۲۰ برد</td></tr>
@@ -250,34 +294,60 @@ nav ul.active{display:flex}
 
 <tr><td>۱۹</td><td>Бэтмен</td><td>عضو</td><td>۲۰ برد</td></tr>
 
-</tbody></table></div></section>
+</tbody>
+</table>
+</div>
+</section>
 </div>
 
 <!-- صفحه اخبار -->
 <div id="news" class="page">
 <div class="page-header"><div class="container"><h2>آخرین اخبار</h2><p>اتفاقاتی که در اتحاد می‌افتد</p></div></div>
 <section class="section"><div class="container"><div class="news-grid">
-<div class="news-card fade-up"><div class="news-date">۱۴ مهر ۱۴۰۵</div><div class="news-title">پیروزی بزرگ در نبرد سرنوشت‌ساز</div><p>اتحاد سربازان شاه موفق شد در یک نبرد نفس‌گیر، حریف خود را با نتیجه قاطع شکست دهد و رکورد ۳۰۰ برد را ثبت کند.</p></div>
-<div class="news-card fade-up"><div class="news-date">۱۰ مهر ۱۴۰۵</div><div class="news-title">صلح دو طرفه با اتحاد همسایه</div><p>پس از مذاکرات دیپلماتیک وزیر طاها، پیمان صلح دو طرفه با یکی از اتحادهای قدرتمند منطقه امضا شد.</p></div>
+
+<div class="news-card fade-up">
+<div class="news-date">۱۴ مهر ۱۴۰۵</div>
+<div class="news-title">پیروزی بزرگ در نبرد سرنوشت‌ساز</div>
+<p>اتحاد سربازان شاه موفق شد در یک نبرد نفس‌گیر، حریف خود را با نتیجه قاطع شکست دهد و رکورد ۳۰۰ برد را ثبت کند.</p>
+</div>
+
+<div class="news-card fade-up">
+<div class="news-date">۱۰ مهر ۱۴۰۵</div>
+<div class="news-title">صلح دو طرفه با اتحاد همسایه</div>
+<p>پس از مذاکرات دیپلماتیک وزیر طاها، پیمان صلح دو طرفه با یکی از اتحادهای قدرتمند منطقه امضا شد.</p>
+</div>
+
 </div></div></section>
 </div>
 
 <!-- صفحه پیام ناشناس -->
 <div id="contact" class="page">
 <div class="page-header"><div class="container"><h2>ارسال پیام ناشناس</h2><p>نظرات، انتقادات یا پیشنهادات خود را بدون ذکر نام بفرستید</p></div></div>
-<section class="section"><div class="container"><div class="form-container fade-up">
+<section class="section">
+<div class="container">
+<div class="form-container fade-up">
 <form onsubmit="event.preventDefault();alert('پیام شما با موفقیت ارسال شد!');this.reset();">
-<div class="form-group"><label>متن پیام شما:</label><textarea rows="6" placeholder="پیام خود را اینجا بنویسید..." required></textarea></div>
+<div class="form-group">
+<label>متن پیام شما:</label>
+<textarea rows="6" placeholder="پیام خود را اینجا بنویسید..." required></textarea>
+</div>
 <button type="submit" class="btn btn-primary shimmer" style="width:100%">ارسال پیام</button>
-</form></div></div></section>
+</form>
+</div>
+</div>
+</section>
 </div>
 
 <!-- صفحه درباره ما -->
 <div id="about" class="page">
 <div class="page-header"><div class="container"><h2>درباره اتحاد</h2><p>تاریخچه، قوانین و اهداف ما</p></div></div>
-<section class="section"><div class="container"><div class="form-container fade-up" style="max-width:800px">
+<section class="section">
+<div class="container">
+<div class="form-container fade-up" style="max-width:800px">
+
 <h3 style="color:var(--gold-main);margin-bottom:15px">معرفی</h3>
 <p style="margin-bottom:30px;line-height:1.8">اتحاد سربازان شاه با رهبری آرتین تاسیس شد و با همت وزیر جنگ عارش و وزیر طاها، به یکی از قدرتمندترین اتحادهای مجازی تبدیل شده است. ما با ۳۰۰+ برد و ۰ باخت، در اوج قدرت هستیم.</p>
+
 <h3 style="color:var(--gold-main);margin-bottom:15px">قوانین اتحاد</h3>
 <ul style="margin-bottom:30px;line-height:2;padding-right:20px">
 <li>احترام به همه اعضا الزامی است.</li>
@@ -285,14 +355,18 @@ nav ul.active{display:flex}
 <li>عدم افشای اطلاعات داخلی اتحاد.</li>
 <li>حمایت از هم‌تیمی‌ها در شرایط سخت.</li>
 </ul>
+
 <h3 style="color:var(--gold-main);margin-bottom:15px">تاریخچه</h3>
 <p style="line-height:1.8">این اتحاد در سال ۱۴۰۴ با هدف ایجاد یک جامعه قدرتمند و متحد شکل گرفت. با گذشت زمان و پیوستن اعضای وفادار، به موفقیت‌های چشمگیری دست یافتیم.</p>
-</div></div></section>
+
+</div>
+</div>
+</section>
 </div>
 
 <footer>
 <div class="container">
-<p>© ۲۰۲۶ اتحاد مجازی سربازان شاه. تمامی حقوق محفوظ است.</p>
+<p>© ۲۰۲۶ اتحاد سربازان شاه. تمامی حقوق محفوظ است.</p>
 <p style="margin-top:5px">طراحی و توسعه: آرتین</p>
 </div>
 </footer>
@@ -300,19 +374,33 @@ nav ul.active{display:flex}
 <script>
 // ذرات طلایی
 const pc=document.getElementById('particles');
-for(let i=0;i<30;i++){const p=document.createElement('div');p.classList.add('particle');p.style.left=Math.random()*100+'vw';p.style.animationDuration=(Math.random()*5+5)+'s';p.style.animationDelay=Math.random()*5+'s';p.style.width=p.style.height=(Math.random()*3+2)+'px';pc.appendChild(p);}
+for(let i=0;i<30;i++){
+const p=document.createElement('div');
+p.classList.add('particle');
+p.style.left=Math.random()*100+'vw';
+p.style.animationDuration=(Math.random()*5+5)+'s';
+p.style.animationDelay=Math.random()*5+'s';
+p.style.width=p.style.height=(Math.random()*3+2)+'px';
+pc.appendChild(p);
+}
 
 // هدر
 const header=document.getElementById('header');
-window.addEventListener('scroll',()=>{if(window.scrollY>50)header.classList.add('scrolled');else header.classList.remove('scrolled');});
+window.addEventListener('scroll',()=>{
+if(window.scrollY>50)header.classList.add('scrolled');
+else header.classList.remove('scrolled');
+});
 
 // منو موبایل
-document.getElementById('hamburger').addEventListener('click',()=>{document.querySelector('nav ul').classList.toggle('active');});
+document.getElementById('hamburger').addEventListener('click',()=>{
+document.querySelector('nav ul').classList.toggle('active');
+});
 
 // تغییر صفحات
 document.querySelectorAll('[data-page]').forEach(link=>{
 link.addEventListener('click',(e)=>{
 e.preventDefault();
+
 const t=link.getAttribute('data-page');
-document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-document.getElementBy
+
+document.queryS
